@@ -7,6 +7,6 @@ Login screen can be sign up with e-mail or via facebook
 
 ![alt tag](https://s31.postimg.org/4twfy7vgr/image.png "Login")
 
-Feed screen. When someone posts, feed updates immediate
+Feed screen. When someone posts, feed updates immediately
 
 ![alt tag](https://s31.postimg.org/xi9e1fxmz/image.png "Feed")
