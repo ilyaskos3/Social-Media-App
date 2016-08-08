@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1E17171D58782A00E04D92 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E17161D58782A00E04D92 /* User.swift */; };
 		2B580C931D51DB87006ED335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B580C921D51DB87006ED335 /* AppDelegate.swift */; };
 		2B580C951D51DB87006ED335 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B580C941D51DB87006ED335 /* ViewController.swift */; };
 		2B580C981D51DB87006ED335 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B580C961D51DB87006ED335 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 		2B580CAF1D51DCBD006ED335 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B580CAB1D51DCBD006ED335 /* NotoSans-Regular.ttf */; };
 		2B580CB21D51DF85006ED335 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B580CB11D51DF85006ED335 /* Constants.swift */; };
 		2B580CB41D51DFED006ED335 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B580CB31D51DFED006ED335 /* MaterialView.swift */; };
+		2B5C72411D54C135008C2319 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C72401D54C135008C2319 /* SignUpVC.swift */; };
 		2B73E52E1D531C2E00E308FD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B73E52A1D531C2E00E308FD /* Bolts.framework */; };
 		2B73E52F1D531C2E00E308FD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B73E52B1D531C2E00E308FD /* FBSDKCoreKit.framework */; };
 		2B73E5301D531C2E00E308FD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B73E52C1D531C2E00E308FD /* FBSDKLoginKit.framework */; };
@@ -31,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1E17161D58782A00E04D92 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B580C8F1D51DB87006ED335 /* test-firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-firebase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B580C921D51DB87006ED335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B580C941D51DB87006ED335 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		2B580CAB1D51DCBD006ED335 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		2B580CB11D51DF85006ED335 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B580CB31D51DFED006ED335 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		2B5C72401D54C135008C2319 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		2B73E52A1D531C2E00E308FD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2B73E52B1D531C2E00E308FD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2B73E52C1D531C2E00E308FD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				2B580C941D51DB87006ED335 /* ViewController.swift */,
 				2BBC5CE41D53638B0069AA77 /* FeedVC.swift */,
 				2BBC5CE61D53645D0069AA77 /* PostCell.swift */,
+				2B5C72401D54C135008C2319 /* SignUpVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBC5CE81D537E820069AA77 /* Post.swift */,
+				2B1E17161D58782A00E04D92 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -321,12 +327,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBC5CE71D53645D0069AA77 /* PostCell.swift in Sources */,
+				2B5C72411D54C135008C2319 /* SignUpVC.swift in Sources */,
 				2BBC5CE51D53638B0069AA77 /* FeedVC.swift in Sources */,
 				2B580C951D51DB87006ED335 /* ViewController.swift in Sources */,
 				2BBC5CE91D537E820069AA77 /* Post.swift in Sources */,
 				2B580C931D51DB87006ED335 /* AppDelegate.swift in Sources */,
 				2B580CB21D51DF85006ED335 /* Constants.swift in Sources */,
 				2B580CB41D51DFED006ED335 /* MaterialView.swift in Sources */,
+				2B1E17171D58782A00E04D92 /* User.swift in Sources */,
 				2B73E5341D5323DD00E308FD /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

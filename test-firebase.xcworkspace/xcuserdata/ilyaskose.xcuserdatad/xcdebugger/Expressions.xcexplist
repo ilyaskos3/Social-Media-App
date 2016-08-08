@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "FeedVC.(viewDidLoad() -&gt; ()).(closure #2):FeedVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "User.currentUser">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FeedVC.viewDidLoad() -&gt; ():FeedVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "User.currentUser">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

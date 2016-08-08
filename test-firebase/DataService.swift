@@ -29,3 +29,13 @@ class DataService{
         return user
     }
 }
+
+func getUserName(id : String) -> String{
+    var name = ""
+    DataService.dService.REF_USERS.child(id).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        name = snapshot.value!["name"] as! String
+    }){ (error) in
+        print(error.localizedDescription)
+    }
+    return name
+}

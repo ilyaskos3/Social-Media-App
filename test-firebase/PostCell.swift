@@ -15,12 +15,12 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var imgLike : UIImageView!
     @IBOutlet weak var textPost : UITextView!
     @IBOutlet weak var labelLile : UILabel!
+    @IBOutlet weak var labelUserName: UILabel!
     
     var post: Post!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         let tap = UITapGestureRecognizer(target: self, action: "likeBtnPressed")
         tap.numberOfTapsRequired = 1
         imgLike.addGestureRecognizer(tap)
@@ -38,10 +38,11 @@ class PostCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(post: Post){
+    func configureCell(post: Post, user : User){
         self.post = post
         self.textPost.text = post.postDescription
         self.labelLile.text = String("\(post.likes) Likes")
+        self.labelUserName.text = post.userName
         
         let likeRef = DataService.dService.REF_CURRENT_USER.child("likes").child(post.postKey)
         likeRef.observeSingleEventOfType(.Value, withBlock:  { snapshot in

@@ -30,10 +30,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
         }
-    }
 
     @IBAction func fbButtonPressed(sender: AnyObject) {
         let fbLogin = FBSDKLoginManager()
@@ -56,8 +53,6 @@ class ViewController: UIViewController {
                         
                         let userData = ["provider": credential.provider]
                         DataService.dService.createFirebaseUser(user!.uid, user: userData)
-                        
-                        NSUserDefaults.standardUserDefaults().setValue(user!.uid, forKey: KEY_UID)
                         self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                     }
                     
@@ -78,22 +73,27 @@ class ViewController: UIViewController {
             FIRAuth.auth()?.signInWithEmail(email, password: pass, completion: { (user,error) in
                 if error != nil {
                     print(error)
-                    if error!.code == STATUS_ACCOUNT_NONEXIST{
-                        FIRAuth.auth()?.createUserWithEmail(email, password: pass, completion: { (user, error) in
-                            if error != nil{
-                                self.showAlert("Problem", msg: "Can not create account")
-                            } else {
-                                NSUserDefaults.standardUserDefaults().setValue(user!.uid, forKey: KEY_UID)
-                                let userData = ["provider":"email"]
-                                DataService.dService.createFirebaseUser(user!.uid, user: userData)
-                                self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-                            }
-                        })
-                    } else {
-                        self.showAlert("Error", msg: "Please check your mail and password")
-                    }
                 } else {
                      self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                }
+            })
+        } else {
+            showAlert("Fields empty", msg: "email and password required")
+        }
+    }
+    
+    @IBAction func signUpBtnPressed(sender: UIButton!){
+       self.performSegueWithIdentifier(SEGUE_SIGN_UP, sender: nil)
+    }
+    
+    @IBAction func signInBtnPressed(sender: UIButton!){
+        if let email = LabelEmail.text where email != "", let pass = LabelPass.text where pass != "" {
+            FIRAuth.auth()?.signInWithEmail(email, password: pass, completion: { (user, error) in
+                //print("xxxx" + error.debugDescription + "xxxx")
+                if error != nil {
+                    self.showAlert("Error", msg: "Please check your mail and password")
+                } else {
+                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                 }
             })
         } else {

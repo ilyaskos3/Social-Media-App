@@ -6,19 +6,21 @@
 //  Copyright © 2016 ilyaskose. All rights reserved.
 //
 
+
 import Foundation
 import Firebase
 
 class Post{
     var postDescription: String!
     var likes: Int!
-    var username: String!
+    var userUid: String!
+    var userName: String!
     var postKey: String!
     var postRef: FIRDatabaseReference!
     
-    init( desc: String, uname: String){
+    init(desc: String, uname: String){
         self.postDescription = desc
-        self.username = uname
+        self.userName = uname
         self.postKey = ""
         self.likes = 0
     }
@@ -33,7 +35,15 @@ class Post{
         if let desc = dictionary["description"] as? String{
             self.postDescription = desc
         }
-        self.username = ""
+        
+        if let u_id = dictionary["user_uid"] as? String{
+            self.userUid = u_id
+        }
+        
+        if let name = dictionary["user_name"] as? String{
+            self.userName = name
+        }
+        
         self.postRef = DataService.dService.REF_POSTS.child(postKey)
     }
     
