@@ -39,6 +39,7 @@ class PostCell: UITableViewCell {
     }
     
     func configureCell(post: Post, user : User){
+        downloadImg(post)
         self.post = post
         self.textPost.text = post.postDescription
         self.labelLile.text = String("\(post.likes) Likes")
@@ -51,6 +52,23 @@ class PostCell: UITableViewCell {
                 self.imgLike.image = UIImage(named: "e-hearth")
             } else {
                 self.imgLike.image = UIImage(named: "f-hearth")
+            }
+        })
+    }
+    
+    func downloadImg(post: Post){
+        let storage = FIRStorage.storage()
+        let storageRef = storage.referenceForURL("gs://fir-test-15ec1.appspot.com/profilePics/\(post.userUid)/profile.jpg")
+        storageRef.dataWithMaxSize(1 * 1024 * 1024, completion: { (data, error) in
+            if error == nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let data = data {
+                        self.imgProfile.image = UIImage(data: data)
+                    }
+                })
+            }else {
+                print(error!.localizedDescription)
+                
             }
         })
     }

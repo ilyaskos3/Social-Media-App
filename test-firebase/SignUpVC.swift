@@ -21,7 +21,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         //newImg.layer.cornerRadius = 10
@@ -53,6 +52,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 } else {
                     let userData = ["provider":"email","name":name]
                     DataService.dService.createFirebaseUser(user!.uid, user: userData)
+                    self.uploadProfilePic()
                     self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                 }
             })
@@ -61,8 +61,21 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             showAlert("Fields empty", msg: "email and password required")
         }
     }
-
     
-
-
+    func uploadProfilePic(){
+        let data = UIImageJPEGRepresentation(self.newImg.image!, 0.1)
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        let postId = "\(FIRAuth.auth()!.currentUser!.uid)"
+        let imagePath = "profilePics/\(postId)/profile.jpg"
+        let storageRef = FIRStorage.storage().reference()
+        let uploadTask = storageRef.child(imagePath).putData(data!, metadata: metadata)
+        uploadTask.observeStatus(.Progress) { snapshot in
+            // Upload reported progress
+            if let progress = snapshot.progress {
+                let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+                print(percentComplete)
+            }
+        }
+    }
 }
